@@ -1,7 +1,7 @@
 <template>
-<div class="footer">
-  <div class="footer-content">{{ trademark }}</div>
-</div>
+  <div class="footer">
+    <div class="footer-content">{{ trademark }}</div>
+  </div>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
     return {
       trademark: "by Ting Ting. All rights reserved."
     };
-  },
+  }
 };
 </script>
 
@@ -23,8 +23,10 @@ export default {
     position:absolute;
     bottom:0px;
     left:0px;
+    font-size: 10px;
   }
   .footer-content{
+    padding-top: 60px;
     text-align: center;
   }
 </style>

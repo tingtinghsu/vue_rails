@@ -1,0 +1,20 @@
+#main-block {
+  background-color: rgb(245, 226, 226);
+  // color: #fff;
+  font-size: large;
+  font-weight: 300;
+  display: block;
+  height: 80vh;
+
+
+  .main-title {
+    display: block;
+    margin-left: 20px;
+    padding-top: 10px;
+  }
+  .main-body {
+    margin-top: 10px;
+    padding-left: 20px;
+    background-color: rgb(241, 232, 232);
+  }
+}
