@@ -17,18 +17,3 @@ const imagePath = (name) => images(name, true)
 
 import 'scripts'
 import 'styles'
-// import "controllers"
-
-import Vue from 'vue/dist/vue.esm'; // 從node module找到
-
-// document.addEventListener("turbolinks:load", function(){
-//   let el = document.querySelector("#board");
-//   if(el){
-//     new Vue({
-//       el,
-//       data: {
-
-//       }
-//     });
-//   }
-// })
