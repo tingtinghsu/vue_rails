@@ -6,7 +6,7 @@ import Foot from '../components/foot'
 Vue.use(TurbolinksAdapter)
 
 document.addEventListener('turbolinks:load', () => {
-  let el = document.querySelector("#main-block");
+  let el = document.querySelector("#main-area");
 
   if (el){
     new Vue({
