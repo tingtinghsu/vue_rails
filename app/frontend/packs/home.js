@@ -12,6 +12,10 @@ document.addEventListener('turbolinks:load', () => {
   if (el){
     new Vue({
       el,
+      data: {
+        day: "第 8 天",
+        topic: "元件的溝通 - props",
+      },
       components: { News, Foot }
     })    
   }
