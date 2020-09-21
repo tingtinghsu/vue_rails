@@ -13,8 +13,14 @@ document.addEventListener('turbolinks:load', () => {
     new Vue({
       el,
       data: {
-        day: "第 8 天",
-        topic: "元件的溝通 - props",
+        day: "第 9 天",
+        topic: "元件的溝通 - props (2)",
+        name: ''
+      },
+      methods: {
+        thankyou(){
+          alert( `${this.name}，謝謝你收看Vue x Rails 鐵人賽系列!`)
+        }
       },
       components: { News, Foot }
     })    

@@ -1,16 +1,16 @@
 <template>
   <div class="news">
     <h1>本日重點：{{ message }}</h1>
-    <i>by {{ author }}</i>
+    <i>觀眾: {{ nickname }}</i>
   </div>
 </template>
 
 <script>
   export default { 
-    props: ['author'],    
+    props: ['nickname'],    
     data: function () {
       return {
-        message: "由外層到內層元件的單向資料流：設定元件屬性props，可供news元件使用"
+        message: "由外層到內層元件的單向資料流：設定元件屬性props，傳入變數"
       }
     }
   }
