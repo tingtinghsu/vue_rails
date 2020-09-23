@@ -2,20 +2,7 @@
   <div class="main-title">Vue.js x Rails第12屆鐵人賽專案：{{ day }}</div>
   <div class="main-body">本日主題：{{ topic }}</div>
 
-  <News v-bind:nickname="name"></News>
-
-  <div class="content-form">
-    <div class="field is-horizontal">
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            <input class="input" type="text" placeholder="你的暱稱" v-bind:nickname="name" v-model="name">
-          </p>
-        </div>
-      </div>
-    </div>
-    <button class="button is-primary is-light" v-on:click="thankyou">送出</button>
-  </div>    
+  <News v-on:news="rootMethod"></News>    
   <Foot></Foot>
 </div>
 
