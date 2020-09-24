@@ -9,7 +9,7 @@
   export default {   
     data: function () {
       return {
-        message: "由內層到外層元件的單向資料流：在子元件利用$emit('自訂事件名稱')送出事件給父元件"
+        message: "to do list"
       }
     },
     methods: {

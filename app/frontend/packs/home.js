@@ -1,6 +1,6 @@
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
-import News from "../components/news"
+import Todos from "../components/todos"
 import Foot from "../components/foot"
 
 
@@ -13,15 +13,16 @@ document.addEventListener('turbolinks:load', () => {
     new Vue({
       el,
       data: {
-        day: "第 10 天",
-        topic: "元件的溝通 - emit",
+        day: "第 11 天",
+        topic: "元件的由內而外傳遞事件 - emit",
+        todos: ["買咖啡", "買口罩", "去郵局"],
       },
       methods: {
-        rootMethod(){
-          console.log("子元件送出事件，傳給父元件")
+        addMoreItem(value){
+          this.todos.push(value)
         }
       },
-      components: { News, Foot }
+      components: { Todos, Foot }
     })    
   }
 })
