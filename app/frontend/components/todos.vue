@@ -1,7 +1,7 @@
 <template id="todo-3M">
   <div class="todo-form">
       <label>本日To do list</label><i class="fas fa-pencil-alt" ></i><hr>
-      <input class="todo-input" type='text' @keydown.enter='createItem' placeholder="請輸入您今天的代辦事項">
+      <input class="todo-input" type='text' @keyup.enter='createItem' placeholder="請輸入您今天的代辦事項">
   </div>
 </template>
 
@@ -10,7 +10,7 @@
     methods: {
       createItem($event){
         this.$emit("additem", $event.target.value)
-        $event.target.value = ""
+        $event.target.value = ''
       }
     },
     template: "#todo-3M"

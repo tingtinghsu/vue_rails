@@ -18,8 +18,15 @@ document.addEventListener('turbolinks:load', () => {
         todos: ["買咖啡", "買口罩", "去郵局"],
       },
       methods: {
-        addMoreItem(value){
-          this.todos.push(value)
+        addMoreItem(item){
+          this.todos.push(item)
+        },
+        removeItem(item){
+          let itemIndex = this.todos.indexOf(item)
+          if (itemIndex >= 0){
+            // 從array中刪除項目，並回傳被刪除後的項目
+            this.todos.splice(itemIndex, 1)
+          }
         }
       },
       components: { Todos, Foot }

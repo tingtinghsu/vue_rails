@@ -4,7 +4,7 @@
 
   <Todos @additem="addMoreItem"></Todos>
   <ul class="todo-item">
-    <li v-for="todo in todos"><i class="far fa-calendar-check"></i> {{ todo }} </li>
+    <li v-for="todo in todos" @click="removeItem(todo)"><i class="far fa-calendar-check"></i> {{ todo }} </li>
   </ul>
   
   <Foot></Foot>
