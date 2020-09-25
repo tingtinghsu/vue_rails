@@ -1,12 +1,12 @@
 <div id="content">
   <div class="main-title">Vue.js x Rails第12屆鐵人賽專案：{{ day }}</div>
   <div class="main-body">本日主題：{{ topic }}</div>
-
-  <Todos @additem="addMoreItem"></Todos>
-  <ul class="todo-item">
-    <li v-for="todo in todos" @click="removeItem(todo)"><i class="far fa-calendar-check"></i> {{ todo }} </li>
-  </ul>
-  
+  <div id="app">
+    <Todos></Todos>
+    <ul class="todo-item">
+      <li v-for="todo in todos" @click="removeItem(todo)"><i class="far fa-calendar-check"></i> {{ todo }} </li>
+    </ul>
+  </div>  
   <Foot></Foot>
 </div>
 

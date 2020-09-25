@@ -9,7 +9,7 @@
   export default {              
     methods: {
       createItem($event){
-        this.$emit("additem", $event.target.value)
+        eventBus.$emit("additem", $event.target.value)
         $event.target.value = ''
       }
     },

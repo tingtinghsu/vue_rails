@@ -10,17 +10,18 @@ document.addEventListener('turbolinks:load', () => {
   let el = document.querySelector("#content");
 
   if (el){
+    let eventBus = new Vue();
     new Vue({
       el,
       data: {
-        day: "第 11 天",
-        topic: "元件的由內而外傳遞事件 - emit",
+        day: "第 12 天",
+        topic: "跨多層的Vue元件資料傳遞: event bus",
         todos: ["買咖啡", "買口罩", "去郵局"],
       },
       methods: {
-        addMoreItem(item){
-          this.todos.push(item)
-        },
+        // addMoreItem(item){
+        //   this.todos.push(item)
+        // },
         removeItem(item){
           let itemIndex = this.todos.indexOf(item)
           if (itemIndex >= 0){
@@ -28,6 +29,12 @@ document.addEventListener('turbolinks:load', () => {
             this.todos.splice(itemIndex, 1)
           }
         }
+      },
+      created(){
+        // 註冊監聽事件
+        eventBus.$on("additem", item => {
+          this.todos.push(item)
+        })
       },
       components: { Todos, Foot }
     })    
