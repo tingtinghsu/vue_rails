@@ -1,37 +1,27 @@
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
-import Vuex from 'vuex'
 import Foot from "../components/foot"
 import Counter from "../components/counter"
+import store from './store';
 
 Vue.use(TurbolinksAdapter)
-Vue.use(Vuex)
+
 
 document.addEventListener('turbolinks:load', () => {
   let el = document.querySelector("#content");
 
   if (el){
-
-    const store = new Vuex.Store({
-      state: {
-        count: 0
-      },
-      mutations: {
-        increment: state => state.count++,
-        decrement: state => state.count--
-      }
-    })
-
     new Vue({
+      store,
       el,
       data: {
         day: "第 13 天",
         topic: "Vuex: 狀態管理",
       },
       computed: {
-        // 直接当做普通属性调用不加括号
-        // 任何data中数据变化立即重新计算
-        // 计算属性会缓存
+        // 直接當作普通屬性調用，不加括號
+        // data中的任何變化會立即重新計算
+        // 會有緩存
         count(){
           return store.state.count
         }
