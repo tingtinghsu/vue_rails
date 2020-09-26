@@ -19,9 +19,6 @@ document.addEventListener('turbolinks:load', () => {
         topic: "Vuex: 狀態管理",
       },
       computed: {
-        // 直接當作普通屬性調用，不加括號
-        // data中的任何變化會立即重新計算
-        // 會有緩存
         count(){
           return store.state.count
         }
