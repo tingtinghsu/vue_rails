@@ -30,4 +30,21 @@
     padding-bottom: 20px;
     background-color: rgb(252,252,218);
   }
+
+  .main-counter {
+    width: 300px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 80%;
+    padding: 20px;
+    background-color: rgb(252,252,218);
+  }
+
+  .counter-button {
+    @apply .rounded-md .border-2 .px-2 .py-1
+  }
+
+  .display-count{
+    @apply .rounded-md .bg-red-200 .w-10 .m-2 .p-3
+  }
 }

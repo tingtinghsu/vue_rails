@@ -1,53 +1,53 @@
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
-import Todos from "../components/todos"
+import Vuex from 'vuex'
 import Foot from "../components/foot"
-import Sender from "../components/sender"
-import Receiver from "../components/receiver"
+import Counter from "../components/counter"
 
 Vue.use(TurbolinksAdapter)
+Vue.use(Vuex)
 
 document.addEventListener('turbolinks:load', () => {
   let el = document.querySelector("#content");
 
   if (el){
-    // 利用Object.defineProperty() 觀察到屬性的值的變動, 實現雙向繫結
-    // 引數:1.目標物件, 2. 需要定義的屬性或方法的名字 3.目標屬性所擁有的特性: 在這裡是取值
-    Object.defineProperty(Vue.prototype, '$bus', {
-      get() {
-        return this.$root.bus;
+
+    const store = new Vuex.Store({
+      state: {
+        count: 0
+      },
+      mutations: {
+        increment: state => state.count++,
+        decrement: state => state.count--
       }
-    });
-    // 名為eventBus的vue instance
-    let eventBus = new Vue({});
+    })
+
     new Vue({
       el,
       data: {
-        day: "第 12 天",
-        topic: "跨多層的Vue元件資料傳遞: event bus",
-        todos: ["買咖啡", "買口罩", "去郵局"],
-        bus: eventBus
+        day: "第 13 天",
+        topic: "Vuex: 狀態管理",
       },
-      methods: {
-        // addMoreItem(item){
-        //   this.todos.push(item)
-        // },
-        removeItem(item){
-          let itemIndex = this.todos.indexOf(item)
-          if (itemIndex >= 0){
-            // 從array中刪除項目，並回傳被刪除後的項目
-            this.todos.splice(itemIndex, 1)
-          }
+      computed: {
+        // 直接当做普通属性调用不加括号
+        // 任何data中数据变化立即重新计算
+        // 计算属性会缓存
+        count(){
+          return store.state.count
         }
       },
-      // created(){
-      //   // 註冊監聽事件
-      //   eventBus.$on("additem", item => {
-      //     this.todos.push(item)
-      //   })
-      // },
+      methods: {
+        increment(){
+          store.commit('increment')
+        },
+        decrement(){
+          store.commit('decrement')
+        }
+      },
+      components: { Counter,Foot }
+    })
 
-      components: { Todos, Foot, Sender, Receiver }
-    })    
+
   }
+
 })
