@@ -1,15 +1,10 @@
 <div id="content">
   <div class="main-title">Vue.js x Rails第12屆鐵人賽專案：{{ day }}</div>
   <div class="main-body">本日主題：{{ topic }}</div>
-  <div class="main-counter">
-    <p>Root元件: Vuex計數器</p>
-    <p class="display-count">{{ count }}</p>
-    <p>
-      <button class="counter-button" @click="increment">+</button>
-      <button class="counter-button" @click="decrement">-</button>
-    </p>
+  <div class="main-audience">{{ audience }}</div>  
+  <div class="main-avatar" v-for="user in subscribers">
+    <img class="avatar" :src="user.avatars[0].url">
   </div>
-  <Counter></Counter>
   <Foot></Foot>
 </div>
 

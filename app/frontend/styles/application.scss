@@ -18,6 +18,12 @@
     background-color: #fff;
   }
 
+  .main-audience {
+    margin-top: 10px;    
+    padding-left: 20px;
+    font-size: small;
+  }
+
   .content-form {
     padding-left: 20px;
   }
@@ -40,11 +46,34 @@
     background-color: rgb(252,252,218);
   }
 
+  .main-avatar {
+    margin-left: 20px;
+    background-color: rgb(217, 238, 197);    
+  }
+
   .counter-button {
     @apply .rounded-md .border-2 .px-2 .py-1
   }
 
   .display-count{
     @apply .rounded-md .bg-red-200 .w-10 .m-2 .p-3
+  }
+
+  
+  .avatar{
+    float: left;
+    margin-top: 1em;
+    margin-right: 1em;
+    position: relative;
+    height: 50px;
+    width: 50px;
+
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
+    // -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+    // -moz-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+    // box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
   }
 }
