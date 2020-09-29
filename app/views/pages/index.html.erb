@@ -1,1 +1,23 @@
-<div>index</div>
+<section class="section hero text-center">
+  <h1 class="title text-xl mt-5 text-teal-500">Lean Kanban 精實看板</h1>
+  <br>
+  <h2 class="subtitle">
+    <div class="text-md">
+    <div class="font-light">讓<strong> 精實看板 </strong>持續改善你的團隊～每一天產品都變得更好！</div>
+    </div> 
+  </h2>
+  <br>
+  <div class="main-pic" >
+    <%#= image_tag 'home/main-pic.png' %>
+  </div>
+  <br>
+  <div>
+    <strong><%= link_to '立刻註冊', new_user_registration_path, class: "font-light button py-2 px-3 bg-teal-200 rounded" unless current_user %></strong>
+  </div>
+  
+  <%# <div class="footer-home">
+    <p>
+      <strong>Lean Kanban</strong> by <a href="https://github.com/tingtinghsu/vue_rails">Ting</a>. All rights reserved.
+    </p>
+  </div> %>
+</section>

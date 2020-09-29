@@ -1,0 +1,18 @@
+    <nav class="bg-teal-700 text-blue-100 text-xl px-4 pt-3 pb-2">
+      <div class="font-thin flex justify-between item-center">
+        <a href="/">
+          <i class="fas fa-columns my-2">
+          </i>
+          Lean Kanban 精實看板
+        </a>
+        <div>
+          <% if user_signed_in? %>
+            <span class="mr-2"><%= current_user.email %></span>
+            <%= link_to '登出', destroy_user_session_path, method: 'delete', class: 'user-button' %>
+          <% else %>
+            <%= link_to '登入', new_user_session_path, class: 'user-button' %>
+            <%= link_to '註冊', new_user_registration_path,  class: 'user-button' %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
