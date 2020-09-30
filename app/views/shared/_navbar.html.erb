@@ -10,8 +10,8 @@
             <span class="mr-2"><%= current_user.email %></span>
             <%= link_to '登出', destroy_user_session_path, method: 'delete', class: 'user-button' %>
           <% else %>
-            <%= link_to '登入', new_user_session_path, class: 'user-button' %>
-            <%= link_to '註冊', new_user_registration_path,  class: 'user-button' %>
+            <%= link_to '登入 ', new_user_session_path, class: 'user-button' %>
+            <%= link_to '註冊 ', new_user_registration_path,  class: 'user-button' %>
           <% end %>
         </div>
       </div>
