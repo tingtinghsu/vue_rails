@@ -4,7 +4,7 @@ class KanbansController < ApplicationController
   # GET /kanbans
   # GET /kanbans.json
   def index
-    @kanbans = Kanban.all
+    @kanbans = current_user.kanbans.all
   end
 
   # GET /kanbans/1
@@ -14,7 +14,7 @@ class KanbansController < ApplicationController
 
   # GET /kanbans/new
   def new
-    @kanban = Kanban.new
+    @kanban = current_user.kanbans.new
   end
 
   # GET /kanbans/1/edit
@@ -24,8 +24,8 @@ class KanbansController < ApplicationController
   # POST /kanbans
   # POST /kanbans.json
   def create
-    @kanban = Kanban.new(kanban_params)
-
+    @kanban = current_user.kanbans.new(kanban_params)
+    # @Kanban.user_id = current_user.id
     respond_to do |format|
       if @kanban.save
         format.html { redirect_to @kanban, notice: 'Kanban was successfully created.' }

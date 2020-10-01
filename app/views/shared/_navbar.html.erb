@@ -7,7 +7,8 @@
         </a>
         <div>
           <% if user_signed_in? %>
-            <span class="mr-2"><%= current_user.email %></span>
+            <span class="mr-2">Hi! <%= current_user.display_name %></span>
+            <%= link_to '帳戶 ', edit_user_registration_path, class: 'user-button' %>            
             <%= link_to '登出', destroy_user_session_path, method: 'delete', class: 'user-button' %>
           <% else %>
             <%= link_to '登入 ', new_user_session_path, class: 'user-button' %>
