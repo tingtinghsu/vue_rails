@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @kanban.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @kanban.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @kanban.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_kanban_path(@kanban) %> |
+<%= link_to 'Back', kanbans_path %>
