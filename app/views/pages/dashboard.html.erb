@@ -1,1 +1,21 @@
-<h1></h1>
+<section class="section hero text-center">
+  <h1 class="title text-xl mt-5 text-teal-500">歡迎登入精實看板</h1>
+  <br>
+  <h2 class="subtitle">
+    <div class="text-md">
+    <div class="font-light"><%= link_to '新增Kanban', new_kanban_path, class: "font-light button py-2 px-3 bg-teal-200 rounded" %></div>
+    </div> 
+  </h2>
+  <br>
+  <div class="main-pics" >
+    <%= image_tag('main-pic.png', size: "300x300", class: "items-center")%>
+  </div>
+  <br>
+
+  
+  <%# <div class="footer-home">
+    <p>
+      <strong>Lean Kanban</strong> by <a href="https://github.com/tingtinghsu/vue_rails">Ting</a>. All rights reserved.
+    </p>
+  </div> %>
+</section>

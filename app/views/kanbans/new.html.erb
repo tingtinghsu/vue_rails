@@ -1,5 +1,21 @@
-<h1>New Kanban</h1>
+<section class="section hero text-center">
+  <h1 class="title text-xl mt-5 text-teal-500">建立看板</h1>
+  <br>
+    <%= render 'form', kanban: @kanban %>
+  <br>
+  <div class="main-pics" >
+    <%= image_tag('main-pic.png', size: "300x300", class: "items-center")%>
+  </div>
+  <br>
 
-<%= render 'form', kanban: @kanban %>
+  
+  <%# <div class="footer-home">
+    <p>
+      <strong>Lean Kanban</strong> by <a href="https://github.com/tingtinghsu/vue_rails">Ting</a>. All rights reserved.
+    </p>
+  </div> %>
+</section>
 
-<%= link_to 'Back', kanbans_path %>
+
+
+

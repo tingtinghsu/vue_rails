@@ -12,21 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label "看板名稱", class: "text-teal-700" %>
+    <%= form.text_field :name, class: "input is-success m-3 bg-teal-200 rounded-md px-3 py-2" %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%#= form.label "看板描述", class: "text-teal-700" %>
+    <%#= form.text_field :description %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="actions m-3">
+    <%= form.submit "建立看板", class: "bg-teal-300 px-3 py-2 rounded" %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= link_to '回上一頁', dashboard_path, class: "bg-yellow-300 px-3 py-2 rounded" %>
 <% end %>

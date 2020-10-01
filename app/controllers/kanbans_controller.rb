@@ -69,6 +69,6 @@ class KanbansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kanban_params
-      params.require(:kanban).permit(:name, :description, :user_id)
+      params.require(:kanban).permit(:name, :description)
     end
 end
