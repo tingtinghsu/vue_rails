@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_012225) do
+ActiveRecord::Schema.define(version: 2020_10_03_012428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2020_10_03_012225) do
     t.index ["user_id"], name: "index_kanbans_on_user_id"
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.string "name"
+    t.bigint "column_id", null: false
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["column_id"], name: "index_tickets_on_column_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -48,4 +57,5 @@ ActiveRecord::Schema.define(version: 2020_10_03_012225) do
 
   add_foreign_key "columns", "kanbans"
   add_foreign_key "kanbans", "users"
+  add_foreign_key "tickets", "columns"
 end

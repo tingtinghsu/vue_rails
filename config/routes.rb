@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tickets
   resources :columns
   resources :kanbans
   devise_for :users
