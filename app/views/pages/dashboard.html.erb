@@ -10,7 +10,7 @@
           <div class="px-6 py-4">
   
             <div class="font-bold text-xl mb-2  fas fa-user-plus"></div>
-            <div class="font-bold text-xl mb-2"><%= link_to kanban.name, kanban_path(kanban) %></div>
+            <div class="font-bold text-xl mb-2"><%= link_to kanban.name, kanban_columns_path(kanban) %></div>
             <p class="text-gray-700 text-base">
               <%=kanban.description %>
             </p>

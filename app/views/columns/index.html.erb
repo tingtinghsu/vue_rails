@@ -18,9 +18,9 @@
         <td><%= column.name %></td>
         <td><%= column.kanban_id %></td>
         <td><%= column.position %></td>
-        <td><%= link_to 'Show', column %></td>
-        <td><%= link_to 'Edit', edit_column_path(column) %></td>
-        <td><%= link_to 'Destroy', column, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Show', column %></td>
+        <td><%#= link_to 'Edit', edit_column_path(column) %></td>
+        <td><%#= link_to 'Destroy', column, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Column', new_column_path %>
+<%#= link_to 'New Column', new_column_path %>
