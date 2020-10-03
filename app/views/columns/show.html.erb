@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @column.name %>
+</p>
+
+<p>
+  <strong>Kanban:</strong>
+  <%= @column.kanban_id %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @column.position %>
+</p>
+
+<%= link_to 'Edit', edit_column_path(@column) %> |
+<%= link_to 'Back', columns_path %>

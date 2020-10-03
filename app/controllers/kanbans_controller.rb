@@ -1,13 +1,11 @@
 class KanbansController < ApplicationController
   before_action :set_kanban, only: [:show, :edit, :update, :destroy]
 
-  # GET /kanbans
   # GET /kanbans.json
   def index
     @kanbans = current_user.kanbans.all
   end
 
-  # GET /kanbans/1
   # GET /kanbans/1.json
   def show
   end
@@ -21,11 +19,9 @@ class KanbansController < ApplicationController
   def edit
   end
 
-  # POST /kanbans
   # POST /kanbans.json
   def create
     @kanban = current_user.kanbans.new(kanban_params)
-    # @Kanban.user_id = current_user.id
     respond_to do |format|
       if @kanban.save
         format.html { redirect_to @kanban, notice: 'Kanban was successfully created.' }

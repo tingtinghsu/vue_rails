@@ -10,6 +10,6 @@ class PagesController < ApplicationController
     end    
   end
   def dashboard
-    
+    @kanbans = current_user.kanbans.all    
   end
 end

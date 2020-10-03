@@ -12,13 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label "看板名稱", class: "text-teal-700" %>
+    <div>
+      <%= form.label "看板名稱", class: "text-teal-700" %>
+    </div>
     <%= form.text_field :name, class: "input is-success m-3 bg-teal-200 rounded-md px-3 py-2" %>
   </div>
 
   <div class="field">
-    <%#= form.label "看板描述", class: "text-teal-700" %>
-    <%#= form.text_field :description %>
+    <div>
+      <%= form.label "看板描述", class: "text-teal-700" %>
+    </div>
+    <%= form.text_area :description, class: "input is-success m-3 bg-teal-200 rounded-md px-3 py-2" %>
   </div>
 
   <div class="actions m-3">
