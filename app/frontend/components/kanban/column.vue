@@ -25,10 +25,10 @@
 
 <style lang="scss" scoped>
   .column{
-    @apply .bg-teal-100 .mx-2 .w-64 .px-3 .py-2 .rounded-md;
+    @apply .bg-teal-100 .mx-2 .my-2 .w-64 .px-3 .py-2 .rounded-md;
 
     .column-name{
-      @apply .font-thin .m-2;
+      @apply .font-thin .m-2  .border-dashed .border-gray-600;
     }
 
     // .ticket-list{

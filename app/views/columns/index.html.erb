@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div class="kanban-title"><%= @kanban.name%></div>
+<hr class="mb-3">
+<div class="kanban-title"><em>Mapping our work allows us to navigate our life.( 將工作視覺化在看板上，使我們能夠駕馭生活 ) - Jim Banson</em></div>
 <div id="column" class="mt-2 px-3 flex" data-kanbanid="<%= @kanban.id%>" >
   <Column v-for="column in columns" :column="column" :key="column.id"></Column>  
 </div>
