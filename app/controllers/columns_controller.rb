@@ -1,10 +1,11 @@
 class ColumnsController < ApplicationController
-  before_action :set_column, only: [:show, :edit, :update, :destroy]
+  before_action :find_column, only: [:show, :edit, :update, :destroy]
 
-  # GET /columns
+
   # GET /columns.json
   def index
-    @columns = Column.all
+    @kanban = Kanban.find(params[:kanban_id])    
+    @columns = @kanban.columns.all
   end
 
   # GET /columns/1
@@ -63,7 +64,7 @@ class ColumnsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_column
+    def find_column
       @column = Column.find(params[:id])
     end
 
