@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<div class="mt-2 px-3 flex">
-  <% @columns.each do |column| %>
-    <div class="bg-teal-100 mx-2 w-64 rounded">
-      <div class="px-3 py-2 font-thin"><%= column.name %></div>
-    </div>
-  <% end %>
+<div id="column" class="mt-2 px-3 flex" data-columns="<%= @columns.to_json(include: :tickets)%>" data-kanbanid="<%= @kanban.id%>" >
+  <Column v-for="column in columns" :column="column" :key="column.id"></Column>  
 </div>
-
 
 <br>
 

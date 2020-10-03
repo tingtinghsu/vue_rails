@@ -1,7 +1,6 @@
 class ColumnsController < ApplicationController
   before_action :find_column, only: [:show, :edit, :update, :destroy]
 
-
   # GET /columns.json
   def index
     @kanban = Kanban.find(params[:kanban_id])    
