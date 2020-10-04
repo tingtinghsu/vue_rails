@@ -26,7 +26,7 @@ document.addEventListener("turbolinks:load", () => {
       components: { Column, Draggable },
       methods: {
         dragColumn(evt){
-          // console.log(evt)
+          console.log(evt)
           // console.log(evt.moved)
 
           // new一個FormData()物件叫做formData
@@ -34,6 +34,7 @@ document.addEventListener("turbolinks:load", () => {
           // acts as list 的 position：從1開始算，移動到新的位置       
           data.append("column[position]", evt.moved.newIndex + 1)
           console.log(data)
+
           //  /kanbans/2/columns/1/drag(.:format)`
           Rails.ajax({
             url: `/kanbans/${this.kanban_id}/columns/${this.columns[evt.moved.newIndex].id}/drag`,

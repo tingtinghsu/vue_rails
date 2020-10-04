@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :find_ticket, only: [:show, :edit, :update, :destroy, :drag]
 
   # GET /tickets
   # GET /tickets.json
@@ -51,6 +51,12 @@ class TicketsController < ApplicationController
     end
   end
 
+  def drag
+    # byebug
+    @ticket.update(ticket_params)
+    # @ticket.insert_at(ticket_params[:position].to_i)    
+    render 'show.json'
+  end
   # DELETE /tickets/1
   # DELETE /tickets/1.json
   def destroy
@@ -63,7 +69,7 @@ class TicketsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_ticket
+    def find_ticket
       @ticket = Ticket.find(params[:id])
     end
 
