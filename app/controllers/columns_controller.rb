@@ -1,5 +1,5 @@
 class ColumnsController < ApplicationController
-  before_action :find_column, only: [:show, :edit, :update, :destroy]
+  before_action :find_column, only: [:show, :edit, :update, :destroy, :drag]
 
   # GET /columns.json
   def index
@@ -20,6 +20,7 @@ class ColumnsController < ApplicationController
   # GET /columns/1/edit
   def edit
   end
+
 
   # POST /columns
   # POST /columns.json
@@ -49,6 +50,13 @@ class ColumnsController < ApplicationController
         format.json { render json: @column.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def drag
+    # byebug
+    @column.insert_at(column_params[:position].to_i)
+    # http://localhost:3335/kanbans/2/columns/2.json
+    render 'show.json'
   end
 
   # DELETE /columns/1

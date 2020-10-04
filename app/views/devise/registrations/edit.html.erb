@@ -15,22 +15,23 @@
     </div>
 
     <div class="field">
-      <%= f.label "目前密碼", class: 'label' %> <p>(請輸入目前的密碼以更新帳戶)</p>
+      <%= f.label "目前密碼", class: 'label' %> <p class="font-thin">(請輸入目前的密碼以更新帳戶)</p>
       <%= f.password_field :current_password, autocomplete: "current-password", class: 'input'  %>
     </div>   
 
-    <div class="field">
-      <%= f.label "新密碼", class: 'label' %>        <p>至少<%= @minimum_password_length %>位數字元</p><p>(如果這次不想變更密碼，請保留空白)</p>
-      <%= f.password_field :password, autocomplete: "new-password", class: 'input'  %>
-      <% if @minimum_password_length %>
-        <br />
-
-      <% end %>
-    </div>
-  
-    <div class="field">
-      <%= f.label "請再次新輸入密碼", class: 'label'  %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
+    <div class="border border-dashed border-red-500 rounded-lg my-5 py-5 w-1/3 mx-auto">
+      <div class="field">
+        <%= f.label "變更新密碼區", class: 'label text-red-500 font-large text-xl' %>        
+        <p class="font-thin">(如果這次不想變更密碼，請保留空白)</p>
+        <p class="text-sm font-thin"><em>至少<%= @minimum_password_length %>位數字元</em></p>      
+        <%= f.password_field :password, autocomplete: "new-password", class: 'input'  %>
+        <br>
+      </div>
+    
+      <div class="field">
+        <%= f.label "請再次新輸入密碼", class: 'label text-red-500'  %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
+      </div>
     </div>
   
     <div class="actions m-2">
