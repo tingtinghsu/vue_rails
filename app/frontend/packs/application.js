@@ -12,19 +12,29 @@ import 'styles'
 import Vue from "vue/dist/vue.esm";
 import Column from "components/kanban/column"
 import Rails from '@rails/ujs'
-import Draggable from 'vuedraggable';
+import draggable from 'vuedraggable';
+import store from 'stores/column';
+import { mapGetters, mapActions } from 'vuex';
 
 document.addEventListener("turbolinks:load", () => {
   let el = document.querySelector("#column");
   if (el){
+    window.$store = store;    
     new Vue({
       el,
-      data: {
-        kanban_id: el.dataset.kanbanid,
-        columns: []
+      store,
+      // data: {
+        // kanban_id: el.dataset.kanbanid,
+        // 把資料放在store裡
+        // columns: []
+      // },
+      computed: {
+        // 接getters，唯讀，觀察data屬性
+        ...mapGetters(["columns"])
       },
-      components: { Column, Draggable },
+      components: { Column, draggable },
       methods: {
+        ...mapActions(["fetchColumn"]),        
         dragColumn(evt){
           console.log(evt)
           // console.log(evt.moved)
@@ -51,20 +61,23 @@ document.addEventListener("turbolinks:load", () => {
         }
       },
       beforeMount(){
+        // 呼叫資料
+        this.fetchColumn();
+        // 搬到Vuex store的action去
         // 打API
-        Rails.ajax({
-          url: `/kanbans/${this.kanban_id}/columns.json`,
-          type: 'GET',
-          dataType: 'json',
-          success: result => {
-            // console.log(this.kanban_id);
-            // console.log(result);
-            this.columns = result;
-          },
-          error: error => {
-            console.log(error);            
-          }
-        });
+        // Rails.ajax({
+        //   url: `/kanbans/${this.kanban_id}/columns.json`,
+        //   type: 'GET',
+        //   dataType: 'json',
+        //   success: result => {
+        //     // console.log(this.kanban_id);
+        //     // console.log(result);
+        //     this.columns = result;
+        //   },
+        //   error: error => {
+        //     console.log(error);            
+        //   }
+        // });
       }
     });
   }

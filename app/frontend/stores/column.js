@@ -1,12 +1,13 @@
-import Vue from 'vue/dist/vue.esm'
-import Vuex from 'vuex'
+import Vue from 'vue/dist/vue.esm';
+import Vuex from 'vuex';
+import Rails from '@rails/ujs';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 // 定義一個新的 Vue Store
 export default new Vuex.Store({
   state: {
-    // 預設空陣列
+    // columns, tickets：預設空陣列
     columns: []
   },
   getters:{
@@ -14,10 +15,29 @@ export default new Vuex.Store({
   },
   mutations: {
     // 將state設定為參數
-    UPDATE_LISTS(state, columns){
+    // 請mutation來更新state
+    UPDATE_COLUMNS(state, columns){
       state.columns = columns;
     }
   },
-  actons: {
+  // 在外面的地方呼叫做事情
+  actions: {
+    fetchColumn({ commit }){
+      Rails.ajax({
+        // url: `/kanbans/${this.kanban_id}/columns.json`,
+        url: `/kanbans/2/columns.json`,
+        type: 'GET',
+        dataType: 'json',
+        success: result => {
+          // console.log(this.kanban_id);
+          commit("UPDATE_COLUMNS", result);
+          console.log(result);
+          // this.columns = result;
+        },
+        error: error => {
+          console.log(error);            
+        }
+      });    
+    }
   }
 });
