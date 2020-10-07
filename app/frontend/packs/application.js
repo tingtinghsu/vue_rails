@@ -18,8 +18,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 document.addEventListener("turbolinks:load", () => {
   let el = document.querySelector("#column");
-  if (el){
-    window.$store = store;    
+  if (el){   
     new Vue({
       el,
       store,
@@ -34,11 +33,10 @@ document.addEventListener("turbolinks:load", () => {
       },
       components: { Column, draggable },
       methods: {
-        ...mapActions(["fetchColumn"]),        
+        ...mapActions(["fetchColumn"]),     
         dragColumn(evt){
           console.log(evt)
           // console.log(evt.moved)
-
           // new一個FormData()物件叫做formData
           let data = new FormData();
           // acts as list 的 position：從1開始算，移動到新的位置       
@@ -61,10 +59,8 @@ document.addEventListener("turbolinks:load", () => {
         }
       },
       beforeMount(){
-        // 呼叫資料
-        this.fetchColumn();
-        // 搬到Vuex store的action去
-        // 打API
+        // 呼叫資料      
+        this.fetchColumn(el.dataset.kanbanid);
         // Rails.ajax({
         //   url: `/kanbans/${this.kanban_id}/columns.json`,
         //   type: 'GET',

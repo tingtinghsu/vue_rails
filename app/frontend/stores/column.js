@@ -22,14 +22,14 @@ export default new Vuex.Store({
   },
   // 在外面的地方呼叫做事情
   actions: {
-    fetchColumn({ commit }){
+    fetchColumn({ commit }, kanbanid){
+      // console.log("kanbanid:" + kanbanid);
       Rails.ajax({
-        // url: `/kanbans/${this.kanban_id}/columns.json`,
-        url: `/kanbans/2/columns.json`,
+        url: `/kanbans/${kanbanid}/columns.json`,
+        // url: `/kanbans/2/columns.json`,
         type: 'GET',
         dataType: 'json',
         success: result => {
-          // console.log(this.kanban_id);
           commit("UPDATE_COLUMNS", result);
           console.log(result);
           // this.columns = result;

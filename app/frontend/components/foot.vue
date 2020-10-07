@@ -9,7 +9,7 @@ export default {
   name: '',
   data: function () {
     return {
-      trademark: "by Ting Ting. All rights reserved."
+      // trademark: "by Ting Ting. All rights reserved."
     };
   }
 };
