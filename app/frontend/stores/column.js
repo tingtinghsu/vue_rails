@@ -21,21 +21,12 @@ export default new Vuex.Store({
         let data = new FormData();
         let el = document.querySelector("#column");           
         data.append("column[position]", evt.moved.newIndex + 1)
-        console.log(evt)
-        // console.log(`/kanbans/${el.dataset.kanbanid}/columns/${state.columns[evt.moved.newIndex].id}/drag`)
+        // console.log(evt)
         Rails.ajax({
           url: `/kanbans/${el.dataset.kanbanid}/columns/${state.columns[evt.moved.newIndex].id}/drag`,
-          // url: `/kanbans/2/columns/${state.columns[evt.moved.newIndex].id}/drag`,
           type: 'PUT',
           data,
           dataType: 'json'
-          // success: result => {
-          //   // commit("UPDATE_COLUMNS", result);            
-          //   console.log(result);
-          // },
-          // error: error => {
-          //   // console.log(error);            
-          // }
         });
       },
     fetchColumn({ commit }, kanbanid){

@@ -1,6 +1,6 @@
 class ColumnsController < ApplicationController
   before_action :find_column, only: [:show, :edit, :update, :destroy, :drag]
-
+  before_action :authenticate_user!
   # GET /columns.json
   def index
     @kanban = Kanban.find(params[:kanban_id])    
@@ -45,6 +45,7 @@ class ColumnsController < ApplicationController
       if @column.update(column_params)
         format.html { redirect_to @column, notice: 'Column was successfully updated.' }
         format.json { render :show, status: :ok, location: @column }
+
       else
         format.html { render :edit }
         format.json { render json: @column.errors, status: :unprocessable_entity }
@@ -56,6 +57,13 @@ class ColumnsController < ApplicationController
     # byebug
     @column.insert_at(column_params[:position].to_i)
     # http://localhost:3335/kanbans/2/columns/2.json
+
+    puts("----column------")    
+    ActionCable.server.broadcast("column", @column)
+    ActionCable.server.broadcast("column", "drag to new position")     
+    ActionCable.server.broadcast("column", column_params[:position].to_i)
+    ActionCable.server.broadcast("column", {commit: 'UPDATE_COLUMNS'})   
+
     render 'show.json'
   end
 

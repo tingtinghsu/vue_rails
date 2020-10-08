@@ -18,10 +18,11 @@ import { mapActions } from 'vuex';
 document.addEventListener("turbolinks:load", () => {
   let el = document.querySelector("#column");
   if (el){   
+    window.$store = store;
     new Vue({
       el,
       store,
-      // data: {
+      // data: {›
         // kanban_id: el.dataset.kanbanid,
         // 把資料放在store裡
         // columns: []
@@ -41,7 +42,7 @@ document.addEventListener("turbolinks:load", () => {
       },
       components: { Column, draggable },
       methods: {
-        ...mapActions(["fetchColumn", "dragColumn"])
+        ...mapActions(["fetchColumn", "dragColumn"])       
       },
       beforeMount(){
         // 呼叫資料      
