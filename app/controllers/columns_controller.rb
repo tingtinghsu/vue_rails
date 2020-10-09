@@ -58,11 +58,16 @@ class ColumnsController < ApplicationController
     @column.insert_at(column_params[:position].to_i)
     # http://localhost:3335/kanbans/2/columns/2.json
 
-    puts("----column------")    
-    ActionCable.server.broadcast("column", @column)
-    ActionCable.server.broadcast("column", "drag to new position")     
-    ActionCable.server.broadcast("column", column_params[:position].to_i)
-    ActionCable.server.broadcast("column", {commit: 'UPDATE_COLUMNS'})   
+    # puts(kanban_columns_path(2).json)
+    puts("----@column------")
+    puts(@column.kanban.id)         
+    # ActionCable.server.broadcast("column", @column)
+    # ActionCable.server.broadcast("column", "drag to new position")     
+    # ActionCable.server.broadcast("column", column_params[:position].to_i)
+    # ActionCable.server.broadcast("column", {commit: 'UPDATE_COLUMNS'})   
+    
+    # ActionCable.server.broadcast "column", {commit: 'UPDATE_COLUMNS', payload: render_to_string('kanban_columns_path(2)', format: :json)}   
+
 
     render 'show.json'
   end

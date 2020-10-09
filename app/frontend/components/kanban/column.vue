@@ -5,6 +5,10 @@
       <draggable v-model="tickets" ghost-class="ghost" group="column" @change="dragTicket">
         <Ticket v-for="ticket in tickets" :ticket="ticket" :key="ticket.id"></Ticket>
       </draggable>
+      <div class="ticket-input">
+        <input class="ticket-name" v-model="ticketname"></input>        
+        <button class="create-ticket-btn" @click="createTicket"><i class="fas fa-plus text-teal-100"></i></button>
+      </div>
     </div>
   </div>
 </template>
@@ -23,17 +27,41 @@
     data: function () {
       return {
         // `v-for`就可以改成用tickets跑迴圈
-        tickets: this.column.tickets   
+        tickets: this.column.tickets,   
+        ticketname: ''
       }
     },
     methods: {
+      createTicket(evt){
+        event.preventDefault();
+        console.log(this.ticketname)
+        let data = new FormData();
+        data.append("ticket[column_id]", this.column.id);
+        data.append("ticket[name]", this.ticketname);
+        Rails.ajax({
+            url: `/kanbans/${this.column.kanban_id}/tickets`,
+            // url: `/kanbans/2/tickets`,
+            type: 'POST',
+            data,
+            dataType: 'json',
+            success: response => {
+              console.log(response)
+              this.tickets.push(response);
+              // 清空輸入框
+              this.ticketname = "";              
+            },
+            error: err => {
+              console.log(err)
+            }
+          });
+      },
       dragTicket(evt){
         console.log(evt)
         let ticketEvt = evt.added || evt.moved
         if(ticketEvt){
           let ticket_id = ticketEvt.element.id;
           let data = new FormData();
-          data.append("ticket[column_id]", this.column.id)                  
+          data.append("ticket[ticket_id]", this.ticket.id)                  
           data.append("ticket[position]", ticketEvt.newIndex + 1)
 
           Rails.ajax({
@@ -65,6 +93,21 @@
     .ticket-list{
       .ghost {
         @apply .border .border-teal-300 .border-dashed;
+      }
+      .ticket-input {
+          @apply .mt-2;
+        .ticket-name {
+                  @apply .w-full .px-2 .py-1 .rounded-md .bg-yellow-100;
+        &:focus {
+          @apply .outline-none;
+        }
+        }
+        .create-ticket-btn {
+          @apply .mx-1 .my-2 .px-2 .py-1 .bg-teal-200 .rounded-md .text-sm .text-gray-800 .font-thin;
+  &:hover {
+    @apply .bg-teal-300;
+  }
+        }
       }
     }
   }

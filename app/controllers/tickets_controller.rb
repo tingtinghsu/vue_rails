@@ -21,6 +21,14 @@ class TicketsController < ApplicationController
   def edit
   end
 
+  def drag
+    # byebug
+    @ticket.update(ticket_params)
+    # @ticket.insert_at(ticket_params[:position].to_i)    
+    render 'show.json'
+  end
+
+  #  url: `/kanbans/${this.column.kanban_id}/tickets
   # POST /tickets
   # POST /tickets.json
   def create
@@ -28,8 +36,11 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-        format.json { render :show, status: :created, location: @ticket }
+      # byebug        
+        # format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+        # format.json { render :show, status: :created, location: @ticket }
+        format.json { render :show, status: :created }
+        # render 'show.json'
       else
         format.html { render :new }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -51,12 +62,7 @@ class TicketsController < ApplicationController
     end
   end
 
-  def drag
-    # byebug
-    @ticket.update(ticket_params)
-    # @ticket.insert_at(ticket_params[:position].to_i)    
-    render 'show.json'
-  end
+
   # DELETE /tickets/1
   # DELETE /tickets/1.json
   def destroy
