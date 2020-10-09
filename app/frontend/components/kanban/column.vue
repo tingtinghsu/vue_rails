@@ -33,7 +33,7 @@
     },
     methods: {
       createTicket(evt){
-        event.preventDefault();
+        evt.preventDefault();
         console.log(this.ticketname)
         let data = new FormData();
         data.append("ticket[column_id]", this.column.id);
@@ -54,6 +54,11 @@
               console.log(err)
             }
           });
+      },
+      removeTicketDemo(evt, ticket){
+        evt.preventDefault();        
+        console.log(evt)
+        console.log(ticket)
       },
       dragTicket(evt){
         console.log(evt)

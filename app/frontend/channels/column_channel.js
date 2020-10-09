@@ -7,12 +7,15 @@ consumer.subscriptions.create("ColumnChannel", {
   },
 
   received(data) {
-    console.log("ColumnChannel")    
+    console.log("ColumnChannel**")    
     console.log(data)
 
-    // if(data.commit){
-    //   window.$store.commit(data.commit)
-    // }
+    if(data.commit){
+      console.log("data commit!")
+      // window.$store.commit(data.commit)
+      console.log(window.$store.state.columns)
+      window.$store.state.columns
+    }
   },
 
   disconnected() {
