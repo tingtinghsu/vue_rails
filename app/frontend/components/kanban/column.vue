@@ -60,20 +60,18 @@
           });
           this.addTicket = false
       },
-      removeTicketDemo(evt, ticket){
-        evt.preventDefault();        
-        console.log(evt)
-        console.log(ticket)
-      },
       dragTicket(evt){
         console.log(evt)
         let ticketEvt = evt.added || evt.moved
         if(ticketEvt){
           let ticket_id = ticketEvt.element.id;
-          let data = new FormData();
-          data.append("ticket[ticket_id]", this.ticket.id)                  
+          console.log("ticket_id")
+          console.log(ticket_id)
+          let data = new FormData();            
+          data.append("ticket[column_id]", this.column.id)                  
           data.append("ticket[position]", ticketEvt.newIndex + 1)
-
+          console.log(data)
+          console.log(`/kanbans/${this.column.kanban_id}/tickets/${ticket_id}/drag`)
           Rails.ajax({
             url: `/kanbans/${this.column.kanban_id}/tickets/${ticket_id}/drag`,
             type: 'PUT',
