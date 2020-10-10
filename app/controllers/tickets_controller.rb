@@ -53,6 +53,8 @@ class TicketsController < ApplicationController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
+      ActionCable.server.broadcast("column", @ticket)        
+      ActionCable.server.broadcast("column", { commit: 'CHANGE_TICKET', payload: render_to_string(:show, format: :json)})        
         format.json { render :show, status: :ok}
       else
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -66,8 +68,9 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      # format.json { head :no_content }
-      format.json { render :show }
+      puts "success"
+      format.json { head :no_content }      
+      # format.json { render :show }
     end
   end
 

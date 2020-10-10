@@ -14,6 +14,20 @@ export default new Vuex.Store({
   mutations: {
     UPDATE_COLUMNS(state, columns){
       state.columns = columns;
+    },
+
+    DESTROY_TICKET(state, {id, column_id}){      
+      let column_index = state.columns.findIndex(col => col.id == column_id)
+      let ticket_index = state.columns[column_index].tickets.findIndex(item => item.id == id)
+
+      state.columns[column_index].tickets.splice(ticket_index, 1)
+    },
+
+    CHANGE_TICKET(state, ticket){
+      let column_index = state.columns.findIndex(column => column.id == ticket.column_id)
+      let ticket_index = state.columns[column_index].tickets.findIndex(item => item.id == ticket.id)
+
+      state.columns[column_index].tickets.splice(ticket_index, 1, ticket)
     }
   },
   actions: {
@@ -27,17 +41,35 @@ export default new Vuex.Store({
         data,
         dataType: 'json',
         success: result => {
-          // commit("UPDATE_COLUMNS", result);
+          // commit("CHANGE_TICKET", result);
           console.log(result);
-          // this.columns = result;
         },
         error: error => {
           console.log(error);            
         }
       });      
     },
-    distroyTicket({ commit }, {id, name}){
-     
+    deleteTicket({ commit }, {id, column_id}){
+      console.log("vuex ") 
+      console.log(id)
+      console.log("vuex column")         
+      console.log(column_id)  
+
+      let el = document.querySelector("#column");   
+
+      Rails.ajax({
+        url: `/kanbans/${el.dataset.kanbanid}/tickets/${id}`,
+        type: 'DELETE',
+        dataType: 'json',
+        success: result => {
+          console.log("ajax response")
+          commit("DESTROY_TICKET", {id, column_id});
+        
+        },
+        error: error => {
+          console.log(error)
+        }
+      });
     },
     dragColumn({ commit, state }, evt) {
         let data = new FormData();
