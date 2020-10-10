@@ -39,10 +39,7 @@
       deleteTicket(evt){
         event.preventDefault();
         if (confirm(`確定刪除"${this.ticket.name}" 嗎?`)){
-          this.$store.dispatch("deleteTicket", {id: this.ticket.id, column_id: this.ticket.column_id})
-          console.log("remove: ") 
-          console.log(this.ticket.id)
-          console.log(this.ticket.column_id)                     
+          this.$store.dispatch("deleteTicket", {id: this.ticket.id, column_id: this.ticket.column_id})                
         }
       }
     }

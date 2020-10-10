@@ -36,11 +36,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-      # byebug        
-        # format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-        # format.json { render :show, status: :created, location: @ticket }
         format.json { render :show, status: :created }
-        # render 'show.json'
       else
         format.html { render :new }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -53,8 +49,8 @@ class TicketsController < ApplicationController
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-      ActionCable.server.broadcast("column", @ticket)        
-      ActionCable.server.broadcast("column", { commit: 'CHANGE_TICKET', payload: render_to_string(:show, format: :json)})        
+      # ActionCable.server.broadcast("column", @ticket)        
+      ActionCable.server.broadcast("column", { commit: 'UPDATE_TICKET', payload: render_to_string(:show, format: :json)})        
         format.json { render :show, status: :ok}
       else
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -68,7 +64,8 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      puts "success"
+      puts "destroy success"
+      ActionCable.server.broadcast("column", { commit: 'DELETE_TICKET', payload: render_to_string(:show, format: :json)})       
       format.json { head :no_content }      
       # format.json { render :show }
     end

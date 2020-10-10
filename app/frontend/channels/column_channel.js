@@ -12,9 +12,6 @@ consumer.subscriptions.create("ColumnChannel", {
 
     if(data.commit){
       console.log("data commit!")
-      // window.$store.commit(data.commit)
-      // console.log(window.$store.state.columns)
-
       window.$store.commit(data.commit, JSON.parse(data.payload));      
     }
   },

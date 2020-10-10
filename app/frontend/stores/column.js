@@ -16,16 +16,16 @@ export default new Vuex.Store({
       state.columns = columns;
     },
 
-    DESTROY_TICKET(state, {id, column_id}){      
+    DELETE_TICKET(state, {id, column_id}){      
       let column_index = state.columns.findIndex(col => col.id == column_id)
-      let ticket_index = state.columns[column_index].tickets.findIndex(item => item.id == id)
+      let ticket_index = state.columns[column_index].tickets.findIndex(tkt => tkt.id == id)
 
       state.columns[column_index].tickets.splice(ticket_index, 1)
     },
 
-    CHANGE_TICKET(state, ticket){
-      let column_index = state.columns.findIndex(column => column.id == ticket.column_id)
-      let ticket_index = state.columns[column_index].tickets.findIndex(item => item.id == ticket.id)
+    UPDATE_TICKET(state, ticket){
+      let column_index = state.columns.findIndex(col => col.id == ticket.column_id)
+      let ticket_index = state.columns[column_index].tickets.findIndex(tkt => tkt.id == ticket.id)
 
       state.columns[column_index].tickets.splice(ticket_index, 1, ticket)
     }
@@ -41,7 +41,7 @@ export default new Vuex.Store({
         data,
         dataType: 'json',
         success: result => {
-          // commit("CHANGE_TICKET", result);
+          // commit("UPDATE_TICKET", result);
           console.log(result);
         },
         error: error => {
@@ -50,11 +50,6 @@ export default new Vuex.Store({
       });      
     },
     deleteTicket({ commit }, {id, column_id}){
-      console.log("vuex ") 
-      console.log(id)
-      console.log("vuex column")         
-      console.log(column_id)  
-
       let el = document.querySelector("#column");   
 
       Rails.ajax({
@@ -62,9 +57,7 @@ export default new Vuex.Store({
         type: 'DELETE',
         dataType: 'json',
         success: result => {
-          console.log("ajax response")
-          commit("DESTROY_TICKET", {id, column_id});
-        
+          // commit("DELETE_TICKET", {id, column_id});
         },
         error: error => {
           console.log(error)
@@ -80,7 +73,14 @@ export default new Vuex.Store({
           url: `/kanbans/${el.dataset.kanbanid}/columns/${state.columns[evt.moved.newIndex].id}/drag`,
           type: 'PUT',
           data,
-          dataType: 'json'
+          dataType: 'json',
+          success: result => {
+            console.log("drag column success")
+            // commit("DELETE_TICKET", {id, column_id});
+          },
+          error: error => {
+            console.log(error)
+          }
         });
     },
     fetchColumn({ commit }, kanbanid){

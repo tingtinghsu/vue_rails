@@ -67,7 +67,7 @@ class ColumnsController < ApplicationController
     # ActionCable.server.broadcast("column", {commit: 'UPDATE_COLUMNS'})   
     
     # ActionCable.server.broadcast "column", {commit: 'UPDATE_COLUMNS', payload: render_to_string('kanban_columns_path(2)', format: :json)}   
-
+    # ActionCable.server.broadcast("column", { commit: 'UPDATE_COLUMNS', payload: render_to_string(:show, format: :json)}) 
 
     render 'show.json'
   end
