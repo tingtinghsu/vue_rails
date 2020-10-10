@@ -20,4 +20,32 @@
 
 [Day10 由內到外：Vue元件的事件單向傳遞: $emit](https://ithelp.ithome.com.tw/articles/10243599)  
 
-[Day11 由內到外：Vue元件的事件單向傳遞: $emit製作todo list](https://ithelp.ithome.com.tw/articles/10244222)
+[Day11 由內到外：Vue元件的事件單向傳遞: $emit製作todo list](https://ithelp.ithome.com.tw/articles/10244222).  
+
+[Day12 由內到外：跨多層的Vue元件資料傳遞: event bus](https://ithelp.ithome.com.tw/articles/10244568). 
+
+[Day13 Vuex狀態管理](https://ithelp.ithome.com.tw/articles/10245419)  
+
+[Day14 Vue instance的生命週期](https://ithelp.ithome.com.tw/articles/10246033)   
+
+[Day15 Vue instance的lifecycle hook: mounted()](https://ithelp.ithome.com.tw/articles/10246641)  
+
+[Day16 Rails專案開發 - 網站進度規劃](https://ithelp.ithome.com.tw/articles/10247233)  
+
+[Day17 Rails專案開發 - 第1個Model : User註冊登入. UI修改](https://ithelp.ithome.com.tw/articles/10247452)  
+
+[Day18 Rails專案開發 - 第2個Model: 建立看板 Kanban](https://ithelp.ithome.com.tw/articles/10247727)  
+
+[Day19 Rails專案開發 - 建立Vue元件: Column component](https://ithelp.ithome.com.tw/articles/10248216)  
+
+[Day20 Rails專案開發 - 建立Vue元件: Ticket component](https://ithelp.ithome.com.tw/articles/10249018). 
+
+[Day21 Rails專案開發 - Vue draggable套件拖拉column](https://ithelp.ithome.com.tw/articles/10249148).  
+
+[Day22 Rails專案開發 - Vue draggable套件拖拉ticket](https://ithelp.ithome.com.tw/articles/10250113). 
+
+[Day23 Rails專案開發 - Vuex狀態管理(1)](https://ithelp.ithome.com.tw/articles/10250328)  
+
+[Day24 Rails專案開發 - Vuex狀態管理(2) mapState、mapGetters、mapActions、mapMutations](https://ithelp.ithome.com.tw/articles/10250731)  
+
+[Day25 Rails專案開發 - 新增ticket](https://ithelp.ithome.com.tw/articles/10251077)  
