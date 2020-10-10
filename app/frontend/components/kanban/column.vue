@@ -6,8 +6,11 @@
         <Ticket v-for="ticket in tickets" :ticket="ticket" :key="ticket.id"></Ticket>
       </draggable>
       <div class="ticket-input">
-        <input class="ticket-name" v-model="ticketname"></input>        
-        <button class="create-ticket-btn" @click="createTicket"><i class="fas fa-plus text-teal-100"></i></button>
+        <button v-if="!addTicket" class="create-ticket-btn" @click="addTicket=true"><i class="fas fa-plus text-teal-100"></i></button> 
+
+        <input v-if="addTicket" class="ticket-name" v-model="ticketname">       
+        <button v-if="addTicket" class="create-ticket-btn" @click="createTicket">建立</button>
+        <button v-if="addTicket" class="cancel-ticket-btn" @click="addTicket=false">取消</button>
       </div>
     </div>
   </div>
@@ -28,7 +31,8 @@
       return {
         // `v-for`就可以改成用tickets跑迴圈
         tickets: this.column.tickets,   
-        ticketname: ''
+        ticketname: '',
+        addTicket: false
       }
     },
     methods: {
@@ -54,6 +58,7 @@
               console.log(err)
             }
           });
+          this.addTicket = false
       },
       removeTicketDemo(evt, ticket){
         evt.preventDefault();        
@@ -103,15 +108,21 @@
           @apply .mt-2;
         .ticket-name {
                   @apply .w-full .px-2 .py-1 .rounded-md .bg-yellow-100;
-        &:focus {
-          @apply .outline-none;
-        }
+          &:focus {
+            @apply .outline-none;
+          }
         }
         .create-ticket-btn {
           @apply .mx-1 .my-2 .px-2 .py-1 .bg-teal-200 .rounded-md .text-sm .text-gray-800 .font-thin;
-  &:hover {
-    @apply .bg-teal-300;
-  }
+          &:hover {
+            @apply .bg-teal-300;
+          }
+        }
+        .cancel-ticket-btn {
+          @apply .mx-1 .my-2 .px-2 .py-1 .bg-gray-200 .rounded-md .text-sm .text-gray-800 .font-thin;
+          &:hover {
+            @apply .bg-gray-300;
+          }
         }
       }
     }
