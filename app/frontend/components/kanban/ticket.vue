@@ -3,11 +3,11 @@
     {{ ticket.name }}
     <div>
       <button class="edit-btn" @click="editTicket=true"><i class="fas fa-edit text-gray-400"></i></button>
-      <button class="delete-btn" @click="removeTicketDemo(ticket)"><i class="fas fa-trash text-gray-400"></i></button>
+      <button class="delete-btn" @click="destoryTicket"><i class="fas fa-trash text-gray-400"></i></button>
       <div v-if="editTicket" class="edit-area">
-        <i class="fas fa-window-close edit-cancel"></i> 
-        <input type="text" class="edit-input">
-        <button class="update-ticket-btn">更新</button>
+        <i class="far fa-window-close edit-cancel" @click="cancelUpdate"></i> 
+        <textarea type="text" class="edit-input" v-model="ticket.name"></textarea>
+        <button class="update-ticket-btn" @click="updateTicket">更新</button>
       </div>        
     </div>
   </div>
@@ -15,6 +15,7 @@
 
 <script>
   import Rails from '@rails/ujs';
+  // import { mapActions } from 'vuex';  
   export default {              
     name: 'Ticket',
     props: ["ticket"],
@@ -25,23 +26,36 @@
       }
     },    
     methods: {
-      updateTicket(){
-
+      //...mapActions(["updateTicket"]),
+      cancelUpdate(evt){
+        evt.preventDefault();
+        this.editTicket = false;
       },
-      deleteTicket(evt){
+      updateTicket(evt){
+        evt.preventDefault();
+        // console.log(this.ticket.id)
+        // console.log(this.ticket.name)
+        this.$store.dispatch("updateTicket", {id: this.ticket.id, name: this.ticket.name})
+        this.editTicket = false;
+      },
+      destroyTicket(evt){
         event.preventDefault();
-          console.log(this.ticket.id)
-          console.log("column id")                     
-          console.log(this.ticket.column_id)  
-          console.log("kanban id")  
-          console.log(column.dataset.kanbanid) 
-          console.log("html")             
-          console.log(column)  
+          // console.log(this.ticket.id)
+          // console.log("column id")                     
+          // console.log(this.ticket.column_id)  
+          // console.log("kanban id")  
+          // console.log(column.dataset.kanbanid) 
+          // console.log("html")             
+          // console.log(column) 
+          
           // console.log(this.ticket.column.kanban_id)  
           // let data = new FormData();
 
         if (confirm(`確定刪除"${this.ticket.name}" 嗎?`)){
+          this.$store.dispatch("distoyTicket", {id: this.ticket.id, name: this.ticket.name})
           console.log("remove: ") 
+          console.log(this.ticket.id)
+          console.log(this.ticket.name)
           // Rails.ajax({
           //   url: `/kanbans/${column.dataset.kanbanid}/tickets/${this.ticket.id}`,
           //   // url: `/kanbans/2/tickets/${this.ticket.id}`,

@@ -17,6 +17,28 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    updateTicket({ commit }, {id, name}){
+      let data = new FormData();
+      let el = document.querySelector("#column");        
+      data.append("ticket[name]", name);
+      Rails.ajax({
+        url: `/kanbans/${el.dataset.kanbanid}/tickets/${id}`,
+        type: 'PUT',
+        data,
+        dataType: 'json',
+        success: result => {
+          // commit("UPDATE_COLUMNS", result);
+          console.log(result);
+          // this.columns = result;
+        },
+        error: error => {
+          console.log(error);            
+        }
+      });      
+    },
+    distroyTicket({ commit }, {id, name}){
+     
+    },
     dragColumn({ commit, state }, evt) {
         let data = new FormData();
         let el = document.querySelector("#column");           
@@ -28,7 +50,7 @@ export default new Vuex.Store({
           data,
           dataType: 'json'
         });
-      },
+    },
     fetchColumn({ commit }, kanbanid){
       // console.log("kanbanid:" + kanbanid);
       Rails.ajax({
