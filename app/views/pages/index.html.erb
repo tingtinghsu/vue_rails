@@ -7,9 +7,11 @@
     </div> 
   </h2>
   <br>
-  <div class="main-pics" >
-    <%= image_tag('main-pic.png', size: "300x300", class: "items-center")%>
+
+  <div class="main-pics flex justify-center" >
+    <%= image_tag('main-pic.png', size: "300x300")%>
   </div>
+
   <br>
   <div>
     <strong><%= link_to '立刻登入', user_session_path, class: "font-light button py-2 px-3 bg-teal-200 rounded" unless current_user %></strong>

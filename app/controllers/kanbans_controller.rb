@@ -1,6 +1,5 @@
 class KanbansController < ApplicationController
   before_action :set_kanban, only: [:show, :edit, :update, :destroy]
-
   # GET /kanbans.json
   def index
     @kanbans = current_user.kanbans.all
@@ -24,7 +23,7 @@ class KanbansController < ApplicationController
     @kanban = current_user.kanbans.new(kanban_params)
     respond_to do |format|
       if @kanban.save
-        format.html { redirect_to @kanban, notice: 'Kanban was successfully created.' }
+        format.html { redirect_to kanban_columns_path(@kanban) }
         format.json { render :show, status: :created, location: @kanban }
       else
         format.html { render :new }
