@@ -15,7 +15,6 @@
 
 <script>
   import Rails from '@rails/ujs';
-  // import { mapActions } from 'vuex';  
   export default {              
     name: 'Ticket',
     props: ["ticket"],
@@ -26,7 +25,6 @@
       }
     },    
     methods: {
-      //...mapActions(["updateTicket"]),
       cancelUpdate(evt){
         evt.preventDefault();
         this.editTicket = false;
@@ -39,7 +37,7 @@
       deleteTicket(evt){
         event.preventDefault();
         if (confirm(`確定刪除"${this.ticket.name}" 嗎?`)){
-          this.$store.dispatch("deleteTicket", {id: this.ticket.id, column_id: this.ticket.column_id})                
+          this.$store.dispatch("deleteTicket", {ticket_id: this.ticket.id, column_id: this.ticket.column_id})                
         }
       }
     }

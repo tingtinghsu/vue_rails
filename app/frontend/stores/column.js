@@ -3,7 +3,6 @@ import Vuex from 'vuex';
 import Rails from '@rails/ujs';
 
 Vue.use(Vuex);
-
 export default new Vuex.Store({
   state: {
     columns: []
@@ -16,10 +15,9 @@ export default new Vuex.Store({
       state.columns = columns;
     },
 
-    DELETE_TICKET(state, {id, column_id}){      
+    DELETE_TICKET(state, {ticket_id, column_id}){      
       let column_index = state.columns.findIndex(col => col.id == column_id)
-      let ticket_index = state.columns[column_index].tickets.findIndex(tkt => tkt.id == id)
-
+      let ticket_index = state.columns[column_index].tickets.findIndex(tkt => tkt.id == ticket_id)
       state.columns[column_index].tickets.splice(ticket_index, 1)
     },
 
@@ -49,15 +47,15 @@ export default new Vuex.Store({
         }
       });      
     },
-    deleteTicket({ commit }, {id, column_id}){
+    deleteTicket({ commit }, {ticket_id, column_id}){
       let el = document.querySelector("#column");   
 
       Rails.ajax({
-        url: `/kanbans/${el.dataset.kanbanid}/tickets/${id}`,
+        url: `/kanbans/${el.dataset.kanbanid}/tickets/${ticket_id}`,
         type: 'DELETE',
         dataType: 'json',
         success: result => {
-          // commit("DELETE_TICKET", {id, column_id});
+          // commit("DELETE_TICKET", {ticket_id, column_id});
         },
         error: error => {
           console.log(error)

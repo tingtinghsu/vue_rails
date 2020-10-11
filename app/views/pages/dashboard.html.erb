@@ -1,35 +1,27 @@
 <section class="section hero text-center">
   <h1 class="title text-xl mt-5 text-teal-500">歡迎登入 <%= current_user.display_name%>的精實看板！</h1>
   <br>
-  <%# <h2 class="subtitle"></h2> %>
-    <div class="text-md flex">
-      <div class="flex-1">
+    <div class="text-md">
+      <div class="flex justify-center">
         <% @kanbans.each do |kanban| %>
-        <div class="max-w-sm rounded overflow-hidden shadow-lg m-5">
-          <%# <img class="w-full" src="/img/card-top.jpg" alt=""> %>
+        <div class=" max-w-sm rounded overflow-hidden shadow-lg m-5">
           <div class="px-6 py-4">
-  
             <div class="font-bold text-xl mb-2  fas fa-user-plus"></div>
             <div class="font-bold text-xl mb-2"><%= link_to kanban.name, kanban_columns_path(kanban) %></div>
             <p class="text-gray-700 text-base">
               <%=kanban.description %>
             </p>
           </div>
-          <div class="px-6 pt-4 pb-2">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#project-management</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#rails</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#actioncable</span>
-          </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
 
       <div class="font-light mt-5 center"><%= link_to '新增Kanban', new_kanban_path, class: "font-light button py-2 px-3 bg-teal-200 rounded" %></div>
       </div> 
     </div>
 
   
-  <div class="footer-home">
+  <div class="footer-home text-center">
     <p>
       <strong>Lean Kanban</strong> by <a href="https://github.com/tingtinghsu/vue_rails">Ting</a>. All rights reserved.
     </p>
