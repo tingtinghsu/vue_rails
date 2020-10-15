@@ -49,3 +49,13 @@
 [Day24 Rails專案開發 - Vuex狀態管理(2) mapState、mapGetters、mapActions、mapMutations](https://ithelp.ithome.com.tw/articles/10250731)  
 
 [Day25 Rails專案開發 - 新增ticket](https://ithelp.ithome.com.tw/articles/10251077)  
+
+[Day26 Rails專案開發 - 新增ticket（v-if語法介紹)](https://ithelp.ithome.com.tw/articles/10251600).  
+
+[Day27 Rails專案開發 - 編輯ticket (使用vuex狀態管理)](https://ithelp.ithome.com.tw/articles/10251974). 
+
+[Day28 Rails專案開發 - 刪除ticket (使用vuex狀態管理)](https://ithelp.ithome.com.tw/articles/10252539)  
+
+[Day29 Rails專案開發 - Action Cable即時互動功能: 以edit和delete ticket為例](https://ithelp.ithome.com.tw/articles/10253012)  
+
+[Day30 Rails專案開發 - 網站部署 + 完賽感言](https://ithelp.ithome.com.tw/articles/10253289)  
